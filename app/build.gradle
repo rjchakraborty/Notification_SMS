@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+
+    buildToolsVersion = '29.0.0'
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.rjchakraborty.notificationcodes"
+        minSdkVersion 21
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode 1
+        versionName "1"
+        resConfigs "en"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            useProguard true
+            proguardFiles = [
+                    getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
+            ]
+        }
+        debug {
+            ext.alwaysUpdateBuildId = false
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true //false
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META_INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+
+}
+repositories {
+    google()
+    jcenter()
+    maven { url 'http://dl.bintray.com/amulyakhare/maven' }
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://jitpack.io' }
+    maven { url "https://dl.bintray.com/drummer-aidan/maven" }
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.1.0-alpha08'
+    implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-messaging:19.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.google.android.material:material:1.0.0'
+}
+
+apply plugin: 'com.google.gms.google-services'
