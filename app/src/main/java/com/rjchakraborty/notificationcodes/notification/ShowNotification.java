@@ -86,13 +86,13 @@ public class ShowNotification {
             } else {
                 vibratePattern = new long[]{0L};
             }
-           /* if (ConnectionUtil.isConnected()) {
+            if (ConnectionUtil.isConnected()) {
                 initNotificationStyle();
-            }*/
+            }
         }
     }
 
-   /* private void initNotificationStyle() {
+   private void initNotificationStyle() {
         //Messaging Conversation Style
         String partnerEmail = SharedPrefer.getString(SharedPrefer.PARTNER_EMAIL_ID);
         if (partnerEmail != null) {
@@ -163,7 +163,7 @@ public class ShowNotification {
             //InBox Notification Style
             inboxStyle = new NotificationCompat.InboxStyle();
         }
-    }*/
+    }
 
 
     public void cancelNotif(boolean all) {
